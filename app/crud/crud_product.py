@@ -1,7 +1,8 @@
-from app.crud.base import CrudBase
-from app.models.product import Product
 from sqlalchemy.orm import Session
 from sqlalchemy.sql.elements import BinaryExpression
+
+from app.crud.base import CrudBase
+from app.models.product import Product
 
 
 class CrudProduct(CrudBase):

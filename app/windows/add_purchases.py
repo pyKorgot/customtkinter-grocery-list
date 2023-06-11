@@ -1,10 +1,12 @@
-import customtkinter as ctk
+from datetime import datetime
 from typing import Callable
+
+import customtkinter as ctk
+
 from app.core.db import get_db
 from app.crud.crud_product import product as crud_product
 from app.crud.crud_purchases import purchases as crud_purchases
 from app.models.product import Product
-from datetime import datetime
 
 
 class AddPurchasesWindow(ctk.CTkToplevel):

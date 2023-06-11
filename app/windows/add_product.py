@@ -1,5 +1,7 @@
-import customtkinter as ctk
 from typing import Callable
+
+import customtkinter as ctk
+
 from app.core.db import get_db
 from app.crud.crud_product import product as crud_product
 

@@ -1,5 +1,6 @@
-from .base import CrudBase
 from app.models import Purchases
+
+from .base import CrudBase
 
 
 class CrudPurchases(CrudBase):

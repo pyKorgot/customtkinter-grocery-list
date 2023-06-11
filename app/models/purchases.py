@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, ForeignKey, Date
+from sqlalchemy import Column, Date, ForeignKey, Integer
+
 from app.models.base import Base
 
 

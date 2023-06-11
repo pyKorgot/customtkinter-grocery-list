@@ -1,34 +1,31 @@
-import customtkinter
-from app.core.db import get_db
-from app.models import Product, Purchases
-from app.core.config import settings
 from datetime import datetime
 
+import customtkinter as ctk
 
-class GridPurchases(customtkinter.CTkFrame):
+from app.core.config import settings
+from app.core.db import get_db
+from app.models import Product, Purchases
+
+
+class GridPurchases(ctk.CTkFrame):
     update_grid = None
 
     def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
+        super().__init__(master, corner_radius=0, **kwargs)
 
         self.update_grid()
-        self.add_update_btn()
-
-    def add_update_btn(self):
-        self.update_btn = customtkinter.CTkButton(self,
-                                                  text='Update Grid',
-                                                  command=self.update_grid)
-        self.update_btn.grid(row=0, column=0, columnspan=2, sticky='ew')
 
     def write_header(self):
-        self.header_name = customtkinter.CTkLabel(self,
-                                                  text='Name Product',
-                                                  width=100)
-        self.header_name.grid(row=1, column=0, pady=3, padx=10, sticky='ew')
-        self.date_purchases = customtkinter.CTkLabel(self,
-                                                     text='Date Purchases',
-                                                     width=100)
-        self.date_purchases.grid(row=1, column=1, pady=3, padx=10, sticky='ew')
+        self.header_name = ctk.CTkLabel(self,
+                                        text='Name Product',
+                                        width=200,
+                                        fg_color='gray60')
+        self.header_name.grid(row=1, column=0, pady=3, padx=0, sticky='ew')
+        self.date_purchases = ctk.CTkLabel(self,
+                                           text='Date Purchases',
+                                           width=100,
+                                           fg_color='gray60')
+        self.date_purchases.grid(row=1, column=1, pady=3, padx=0, sticky='ew')
 
     def get_store(self) -> list:
         db = get_db()
@@ -43,24 +40,27 @@ class GridPurchases(customtkinter.CTkFrame):
             self.write_row(index_row, row)
 
     def write_row(self, index_row, row) -> None:
-        self.name_product = customtkinter.CTkLabel(
+        self.name_product = ctk.CTkLabel(
             self,
-            text=row.product_name
+            text=row.product_name,
+            fg_color='gray80',
+            width=100
         )
         self.name_product.grid(row=index_row,
                                column=0,
-                               pady=1,
-                               padx=10,
+                               pady=0,
+                               padx=0,
                                sticky='ew')
-        self.date_purchases = customtkinter.CTkLabel(
+        self.date_purchases = ctk.CTkLabel(
             self,
             text=datetime.strftime(row.date_purchases,
-                                   settings.base_datetime_format)
+                                   settings.base_datetime_format),
+            fg_color='gray80'
         )
         self.date_purchases.grid(row=index_row,
                                  column=1,
-                                 pady=1,
-                                 padx=3,
+                                 pady=0,
+                                 padx=0,
                                  sticky='ew')
 
 

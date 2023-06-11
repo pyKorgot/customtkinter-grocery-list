@@ -1,8 +1,9 @@
 from typing import TypeVar
-from app.models.base import Base
+
 from sqlalchemy.orm import Session
 from sqlalchemy.sql.elements import BinaryExpression
 
+from app.models.base import Base
 
 ModelType = TypeVar("ModelType", bound=Base)
 
