@@ -1,0 +1,4 @@
+alembic=1.11.1
+sqlalchemy==2.0.16
+pydantic==1.10.9
+customtkinter==5.1.3
